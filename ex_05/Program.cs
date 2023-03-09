@@ -6,7 +6,7 @@ if (a > 0)
     while (num >= -a)
     {
         Console.Write(num);
-        Console.Write(" ");
+        Console.Write(", ");
         num -= 1;
     }
 }
@@ -17,7 +17,7 @@ else
         while (num <= -a)
         {
             Console.Write(num);
-            Console.Write(" ");
+            Console.Write(", ");
             num += 1;
         }
     }
