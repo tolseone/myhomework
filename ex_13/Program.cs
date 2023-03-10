@@ -5,20 +5,24 @@
 // 78 -> третьей цифры нет
 // 32679 -> 6
 
-Console.WriteLine("Введите любое число, а я выведу 3 цифру с начала");
-
-int num = Convert.ToInt32(Console.ReadLine());
-
-int dig = -1;
-
-for (int i = num; i < 1000; i /= 10)
+int Prompt(string message)
 {
-    
-} 
-return i;
-
-if (dig < i % 10)
-{
-    Console.WriteLine($"3-яя цифра: {i % 10}");
+    System.Console.WriteLine(message);
+    string value = Console.ReadLine();
+    int result = Convert.ToInt32(value);
+    return result;
 }
-else Console.WriteLine("третьей цифры нет");
+
+int num = Prompt("Введите любое число, а программа Вам покажет 3-юю цифру слева направо");
+if (num < 100 && num > -100)
+{
+    Console.WriteLine("Третьей цифры нет, введите число больше 99 или меньше -99");
+}
+else 
+{
+    while (num > 1000 || num < -1000)
+    {
+        num /= 10;
+    }
+    Console.WriteLine($"Третья цифра: {num % 10}");
+}
