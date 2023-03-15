@@ -23,9 +23,25 @@ int [] GenerateNewArray(int len, int minValue, int maxvalue)
     return my_array;
 }
 
-int [] GenerateProdedArray(int[] array)
+int[] LengthProdedArray(int[] array)
 {
-    for 
+    if(array.Length % 2 == 0)
+    return new int[array.Length / 2];
+    else return new int[array.Length /2 + 1];
+}
+                                           
+int [] GenerateProdedArray(int[] array)    
+{
+    int [] new_array = LengthProdedArray(array); 
+    for (int i = 0; i < array.Length / 2; i++) 
+    {
+        new_array[i] = array[i] * array[array.Length -1 - i];
+    }
+    if(array.Length % 2 != 0)
+    {
+        new_array[new_array.Length - 1] = array[array.Length / 2];
+    }
+    return new_array;
 }
 
 void PrintArray(int[] array)
@@ -38,21 +54,13 @@ void PrintArray(int[] array)
     Console.WriteLine($"{array[array.Length - 1]}]");
 }
 
-int Sum_On_Nechet_i(int[] array)
-{
-    int sum = 0;
-    for (int i = 1; i < array.Length; i += 2)   // Найдите сумму элементов массива под нечетным индексом : i = 1, 3, 5..... etc
-    {
-        sum += array[i];
-    }
-    return sum;
-}
 
 int arrayLen = ReadNum("Введите длину массива: ");
-int min_Value = ReadNum("Мин разброс чисел в массиве");
-int max_Value = ReadNum("Мах разброс чисел в массиве");
+int min_Value = ReadNum("Мин разброс чисел в массиве: ");
+int max_Value = ReadNum("Мах разброс чисел в массиве: ");
 
 int[] my_array = GenerateNewArray(arrayLen, min_Value, max_Value);
 PrintArray(my_array);
 
-Console.WriteLine($"Сумма элементов массива под нечетными индексами = {Sum_On_Nechet_i(my_array)}");
+int[] my_new_array = GenerateProdedArray(my_array);
+PrintArray(my_new_array);
